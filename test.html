@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple One-Page Site</title>
+
+  <!-- INTERNAL CSS: all styling stays inside this page -->
+  <style>
+    /* Reset-ish */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #222; background: linear-gradient(180deg,#f7fafc,#eef2f7); }
+
+    /* Page layout */
+    .container { max-width: 980px; margin: 36px auto; padding: 28px; background: #fff; border-radius: 14px; box-shadow: 0 8px 30px rgba(15,23,42,0.06); }
+
+    /* Header / Nav */
+    header { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; }
+    .brand { display:flex; gap:12px; align-items:center; text-decoration:none; color:inherit; }
+    .logo { width:46px; height:46px; border-radius:10px; background: linear-gradient(135deg,#667eea,#764ba2); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:18px; }
+    nav { display:flex; gap:10px; align-items:center; }
+    nav a { text-decoration:none; padding:8px 12px; border-radius:8px; color:#374151; font-weight:600; font-size:14px; }
+    nav a:hover { background:#f3f4f6; }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1fr 360px; gap:24px; align-items:center; margin-bottom:22px; }
+    .hero h1 { font-size:28px; line-height:1.05; margin-bottom:8px; color:#0f172a; }
+    .hero p { color:#475569; margin-bottom:14px; }
+    .cta { display:flex; gap:10px; }
+    .btn { padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none; cursor:pointer; }
+    .btn-primary { background: linear-gradient(90deg,#2563eb,#7c3aed); color:#fff; border: none; }
+    .btn-ghost { background: transparent; border:1px solid #e6e9ee; color:#0f172a; }
+
+    /* Card on right */
+    .card { background:#0f172a; color:#fff; padding:18px; border-radius:12px; box-shadow: 0 6px 18px rgba(12,16,25,0.18); }
+    .card small { opacity:0.85; }
+
+    /* Features */
+    .features { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:14px; margin-top:18px; }
+    .feature { padding:14px; border-radius:10px; border:1px dashed #eef2f7; background:#fff; }
+    .feature h3 { margin-bottom:8px; font-size:16px; color:#0f172a; }
+    .feature p { color:#6b7280; font-size:14px; }
+
+    /* Footer / small print */
+    footer { margin-top:20px; display:flex; justify-content:space-between; align-items:center; color:#64748b; font-size:13px; }
+
+    /* Responsive */
+    @media (max-width:880px) {
+      .hero { grid-template-columns: 1fr; }
+      .card { order: -1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">V</div>
+        <div>
+          <div style="font-weight:800; font-size:16px;">Verulix</div>
+          <div style="font-size:12px; color:#64748b;">One-page demo</div>
+        </div>
+      </a>
+
+      <nav aria-label="Main">
+        <a href="#features">Features</a>
+        <a href="#setup">Setup</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <h1 id="hero-title">Simple single-file HTML with inline CSS</h1>
+          <p>Save this page as <strong>index.html</strong> and open it in any browser. Ideal as a static landing page, demo page, or an S3 static-hosted site.</p>
+
+          <div class="cta">
+            <a class="btn btn-primary" href="#setup" role="button">How to host</a>
+            <a class="btn btn-ghost" href="#features" role="button">See features</a>
+          </div>
+
+          <div id="features" class="features" style="margin-top:18px;">
+            <div class="feature">
+              <h3>Single file</h3>
+              <p>No external CSS — everything lives in this file. Easy to move, upload, and test.</p>
+            </div>
+            <div class="feature">
+              <h3>Responsive</h3>
+              <p>Layout adapts for phones and tablets using a small media query.</p>
+            </div>
+            <div class="feature">
+              <h3>Lightweight</h3>
+              <p>Minimal markup, no frameworks — fast to load and simple to customize.</p>
+            </div>
+            <div class="feature">
+              <h3>Accessible</h3>
+              <p>Clear headings, semantic tags, and decent color contrast for readability.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card" aria-label="Quick info">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div>
+              <div style="font-size:13px; opacity:0.9;">Status</div>
+              <div style="font-weight:800; font-size:18px; margin-top:6px;">Ready to use</div>
+            </div>
+
+            <div>
+              <small>To host on AWS S3 (public):</small>
+              <ol style="margin-top:8px; margin-left:16px; color:#e6eefc;">
+                <li>Create bucket</li>
+                <li>Upload index.html</li>
+                <li>Enable static website hosting</li>
+              </ol>
+            </div>
+
+            <div style="margin-top:6px;">
+              <small>Tip:</small>
+              <div style="margin-top:6px; font-size:13px;">Edit text and colors directly in this file. Save & refresh the browser to see changes.</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="setup" style="margin-top:18px;">
+        <h2 style="font-size:18px; margin-bottom:10px; color:#0f172a;">Quick setup (local or S3)</h2>
+        <p style="color:#475569; margin-bottom:10px;">Local: save as <code>index.html</code> and open in browser. For S3 static hosting: upload the file and set it as the index document in bucket settings.</p>
+
+        <pre style="background:#f8fafc;border-radius:8px;padding:12px;border:1px solid #eef2f7;color:#0f172a;overflow:auto;font-size:13px;">
+File: index.html
+Open: file://<path>/index.html
+S3: Enable static site hosting → Index document: index.html
+        </pre>
+      </section>
+    </main>
+
+    <footer>
+      <div>Made with ♥ — Single-file demo</div>
+      <div id="contact">Need changes? Reply and tell me what style or content you want.</div>
+    </footer>
+  </div>
+
+</body>
+</html>
